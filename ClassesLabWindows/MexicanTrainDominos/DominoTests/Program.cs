@@ -20,6 +20,7 @@ namespace DominoTests
             TestDominoFlip();
             TestDominoScore();
             TestDominoIsDouble();
+            TestDominoPropertySettersWithExceptions();
 
             Console.ReadLine();
         }
@@ -63,6 +64,59 @@ namespace DominoTests
             d1.Side1 = 4;
             d1.Side2 = 5;
             Console.WriteLine("Expecting 4, 5 " + d1);
+            Console.WriteLine();
+        }
+
+        static void TestDominoPropertySettersWithExceptions()
+        {
+            Domino d1 = new Domino(12, 6);
+
+            Console.WriteLine("Testing invalid setter values");
+            try
+            {
+                d1.Side1 = -1;
+            }
+            catch
+            {
+                Console.WriteLine("Threw an exception when Side1 is negative");
+                Console.WriteLine("Side1 should still be 12 " + d1.Side1);
+            }
+            try
+            {
+                d1.Side1 = 13;
+            }
+            catch
+            {
+                Console.WriteLine("Threw an exception when Side1 is more than 12");
+                Console.WriteLine("Side1 should still be 12 " + d1.Side1);
+            }
+            try
+            {
+                d1.Side2 = -1;
+            }
+            catch
+            {
+                Console.WriteLine("Threw an exception when Side2 is negative");
+                Console.WriteLine("Side2 should still be 6 " + d1.Side2);
+            }
+            try
+            {
+                d1.Side2 = 13;
+            }
+            catch
+            {
+                Console.WriteLine("Threw an exception when Side2 is more than 12");
+                Console.WriteLine("Side2 should still be 6 " + d1.Side2);
+            }
+            try
+            {
+                d1 = new Domino(-1, 15);
+            }
+            catch
+            {
+                Console.WriteLine("Constructor should also throw an exception when values are invalid");
+                Console.WriteLine("d1 is now " + d1);
+            }
             Console.WriteLine();
         }
 

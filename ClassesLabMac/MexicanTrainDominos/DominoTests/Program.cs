@@ -16,6 +16,7 @@ namespace DominoTests
             TestDominoFlip();
             TestDominoScore();
             TestDominoIsDouble();
+            TestDominoPropertySettersWithExceptions();
 
             Console.ReadLine();
         }
